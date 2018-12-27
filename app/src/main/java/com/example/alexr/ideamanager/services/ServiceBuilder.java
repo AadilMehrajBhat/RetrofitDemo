@@ -1,6 +1,12 @@
 package com.example.alexr.ideamanager.services;
 
+import android.os.Build;
+import java.io.IOException;
+import java.util.Locale;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
 import retrofit2.Retrofit;
@@ -17,6 +23,19 @@ public class ServiceBuilder {
 
     // OkHttp Client
     private static OkHttpClient mOkHttpClient = new OkHttpClient.Builder()
+        .addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request();
+
+                request = request.newBuilder()
+                    .addHeader("x-device-type", Build.DEVICE)
+                    .addHeader("Accept-Language", Locale.getDefault().getLanguage())
+                    .build();
+
+                return chain.proceed(request);
+            }
+        })
         .addInterceptor(mLogger)
         .build();
 
