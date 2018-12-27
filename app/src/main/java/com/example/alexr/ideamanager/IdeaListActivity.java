@@ -51,7 +51,7 @@ public class IdeaListActivity extends AppCompatActivity {
         }
 
         IdeaService ideaService = ServiceBuilder.buildService(IdeaService.class);
-        Call<List<Idea>> ideasRequest = ideaService.getIdeas();
+        Call<List<Idea>> ideasRequest = ideaService.getIdeas(null, 20);
 
         ideasRequest.enqueue(new Callback<List<Idea>>() {
             @Override
