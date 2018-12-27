@@ -9,6 +9,8 @@ import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -17,14 +19,16 @@ import retrofit2.http.QueryMap;
 
 public interface IdeaService {
 
+
     @GET("ideas")
     Call<List<Idea>> getIdeas(@Query("owner") String owner, @Query("count") int count);
 
     @GET("ideas")
     Call<List<Idea>> getIdeas(@QueryMap HashMap<String, String> filters);
 
+    @Headers("x-device-type: Android")
     @GET("ideas/{id}")
-    Call<Idea> getIdea(@Path("id") int id);
+    Call<Idea> getIdea(@Path("id") int id, @Header("Accept-Language") String language);
 
     @POST("ideas")
     Call<Idea> createIdea(@Body Idea newIdea);

@@ -54,7 +54,7 @@ public class IdeaDetailFragment extends Fragment {
                 .findViewById(R.id.toolbar_layout);
 
             IdeaService ideaService = ServiceBuilder.buildService(IdeaService.class);
-            Call<Idea> itemRequest = ideaService.getIdea(getArguments().getInt(ARG_ITEM_ID));
+            Call<Idea> itemRequest = ideaService.getIdea(getArguments().getInt(ARG_ITEM_ID), "en-US");
             itemRequest.enqueue(new Callback<Idea>() {
                 @Override
                 public void onResponse(Call<Idea> call, Response<Idea> response) {
