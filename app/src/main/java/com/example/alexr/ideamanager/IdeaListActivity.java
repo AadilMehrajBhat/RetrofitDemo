@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.alexr.ideamanager.models.Idea;
 import com.example.alexr.ideamanager.services.IdeaService;
 import com.example.alexr.ideamanager.services.ServiceBuilder;
+import java.util.HashMap;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -50,8 +51,15 @@ public class IdeaListActivity extends AppCompatActivity {
             mTwoPane = true;
         }
 
+        HashMap<String, String> filterMap = new HashMap<>();
+        filterMap.put("owner", "Jim");
+        filterMap.put("count", "3");
+        filterMap.put("status", "Working");
+
         IdeaService ideaService = ServiceBuilder.buildService(IdeaService.class);
-        Call<List<Idea>> ideasRequest = ideaService.getIdeas(null, 20);
+        Call<List<Idea>> ideasRequest;
+        ideasRequest = ideaService.getIdeas(null, 20);
+        ideasRequest = ideaService.getIdeas(filterMap);
 
         ideasRequest.enqueue(new Callback<List<Idea>>() {
             @Override
