@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.alexr.ideamanager.models.Idea;
 import com.example.alexr.ideamanager.services.IdeaService;
 import com.example.alexr.ideamanager.services.ServiceBuilder;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import retrofit2.Call;
@@ -44,7 +45,7 @@ public class IdeaListActivity extends AppCompatActivity {
             }
         });
 
-        final RecyclerView recyclerView = (RecyclerView)findViewById(R.id.idea_list);
+        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.idea_list);
         assert recyclerView != null;
 
         if (findViewById(R.id.idea_detail_container) != null) {
@@ -64,19 +65,31 @@ public class IdeaListActivity extends AppCompatActivity {
         ideasRequest.enqueue(new Callback<List<Idea>>() {
             @Override
             public void onResponse(Call<List<Idea>> call, Response<List<Idea>> response) {
-                recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(response.body()));
+                if (response.isSuccessful()) {
+                    recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(response.body()));
+                } else if (response.code() == 401) {
+                    Toast.makeText(context, "Your session has expired!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Failed to retrieve items", Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
             public void onFailure(Call<List<Idea>> call, Throwable t) {
-                Toast.makeText(context, "Failed to retrieve ideas", Toast.LENGTH_SHORT).show();
+                if (t instanceof IOException) {
+                    Toast.makeText(context, "A Connection error occurred!", Toast.LENGTH_SHORT)
+                        .show();
+                } else {
+                    Toast.makeText(context, "Failed to retrieve ideas", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
-//region Adapter Region
+    //region Adapter Region
     public class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
+        extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
         private final List<Idea> mValues;
 
@@ -87,7 +100,7 @@ public class IdeaListActivity extends AppCompatActivity {
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.idea_list_content, parent, false);
+                .inflate(R.layout.idea_list_content, parent, false);
             return new ViewHolder(view);
         }
 
@@ -106,8 +119,8 @@ public class IdeaListActivity extends AppCompatActivity {
                         IdeaDetailFragment fragment = new IdeaDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.idea_detail_container, fragment)
-                                .commit();
+                            .replace(R.id.idea_detail_container, fragment)
+                            .commit();
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, IdeaDetailActivity.class);
@@ -125,6 +138,7 @@ public class IdeaListActivity extends AppCompatActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
+
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
