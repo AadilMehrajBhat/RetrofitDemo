@@ -28,6 +28,12 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <include layout="@layout/idea_list" />
+
+      <ProgressBar
+        android:id="@+id/loading_bar"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_gravity="center"/>
     </FrameLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -37,5 +43,14 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_input_add" />
+
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/cancel_fab"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:fabSize="mini"
+    app:srcCompat="@drawable/ic_cancel_black_24dp"
+    android:layout_gravity="bottom|start"
+    android:layout_margin="16dp"/>
 
 </android.support.design.widget.CoordinatorLayout>

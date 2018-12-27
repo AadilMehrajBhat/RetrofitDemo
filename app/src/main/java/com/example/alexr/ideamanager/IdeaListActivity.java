@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,14 +59,16 @@ public class IdeaListActivity extends AppCompatActivity {
         filterMap.put("status", "Working");
 
         IdeaService ideaService = ServiceBuilder.buildService(IdeaService.class);
-        Call<List<Idea>> ideasRequest;
-        ideasRequest = ideaService.getIdeas(filterMap);
+        final Call<List<Idea>> ideasRequest;
+//        ideasRequest = ideaService.getIdeas(filterMap);
         ideasRequest = ideaService.getIdeas(null, 20);
 
+        findViewById(R.id.loading_bar).setVisibility(View.VISIBLE);
         ideasRequest.enqueue(new Callback<List<Idea>>() {
             @Override
             public void onResponse(Call<List<Idea>> call, Response<List<Idea>> response) {
                 if (response.isSuccessful()) {
+                    findViewById(R.id.loading_bar).setVisibility(View.GONE);
                     recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(response.body()));
                 } else if (response.code() == 401) {
                     Toast.makeText(context, "Your session has expired!", Toast.LENGTH_SHORT).show();
@@ -83,6 +86,15 @@ public class IdeaListActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(context, "Failed to retrieve ideas", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        findViewById(R.id.cancel_fab).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                findViewById(R.id.loading_bar).setVisibility(View.GONE);
+                ideasRequest.cancel();
+                Toast.makeText(context, "Request Cancelled!", Toast.LENGTH_SHORT).show();
             }
         });
     }
