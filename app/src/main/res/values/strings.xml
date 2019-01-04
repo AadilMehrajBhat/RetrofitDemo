@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Globomantics Innovations</string>
+    <string name="app_name">RetrofitDemo</string>
     <string name="title_task_detail">Just a Thought</string>
   <string name="request_failed">Request Failed!</string>
 </resources>

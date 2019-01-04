@@ -21,7 +21,7 @@ public class LandingActivity extends AppCompatActivity {
         MessageService messageService = ServiceBuilder.buildService(MessageService.class);
         Call<String> messageCall;
         messageCall = messageService.getMessage();
-        messageCall = messageService.getMessage("http://10.0.2.2:7000/messages");
+//        messageCall = messageService.getMessage("http://10.0.2.2:7000/messages");
 
         messageCall.enqueue(new Callback<String>() {
             @Override

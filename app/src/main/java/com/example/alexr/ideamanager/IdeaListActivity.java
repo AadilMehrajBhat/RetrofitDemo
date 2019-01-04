@@ -89,14 +89,6 @@ public class IdeaListActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.cancel_fab).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                findViewById(R.id.loading_bar).setVisibility(View.GONE);
-                ideasRequest.cancel();
-                Toast.makeText(context, "Request Cancelled!", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     //region Adapter Region
