@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.alexr.ideamanager">
+    package="com.example.aadilmehraj.ideamanager">
 
   <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -12,30 +12,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.alexr.ideamanager.IdeaListActivity"
+            android:name="com.example.aadilmehraj.ideamanager.IdeaListActivity"
             android:label="Innovation Ideas"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.alexr.ideamanager.IdeaDetailActivity"
+            android:name="com.example.aadilmehraj.ideamanager.IdeaDetailActivity"
             android:label="@string/title_task_detail"
-            android:parentActivityName="com.example.alexr.ideamanager.IdeaListActivity"
+            android:parentActivityName="com.example.aadilmehraj.ideamanager.IdeaListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.alexr.ideamanager.IdeaListActivity" />
+                android:value="com.example.aadilmehraj.ideamanager.IdeaListActivity" />
         </activity>
         <activity
-            android:name="com.example.alexr.ideamanager.IdeaCreateActivity"
+            android:name="com.example.aadilmehraj.ideamanager.IdeaCreateActivity"
             android:label="A New Thought"
-            android:parentActivityName="com.example.alexr.ideamanager.IdeaListActivity"
+            android:parentActivityName="com.example.aadilmehraj.ideamanager.IdeaListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.alexr.ideamanager.IdeaListActivity" />
+                android:value="com.example.aadilmehraj.ideamanager.IdeaListActivity" />
         </activity>
         <activity
-            android:name="com.example.alexr.ideamanager.LandingActivity"
-            android:label="Globomantics"
+            android:name="com.example.aadilmehraj.ideamanager.LandingActivity"
+            android:label="RetrofitDemo"
             android:theme="@style/AppTheme.NoActionBar">
 
             <intent-filter>

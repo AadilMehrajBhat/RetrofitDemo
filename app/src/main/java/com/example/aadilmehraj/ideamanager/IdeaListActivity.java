@@ -1,4 +1,4 @@
-package com.example.alexr.ideamanager;
+package com.example.aadilmehraj.ideamanager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,13 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.alexr.ideamanager.models.Idea;
-import com.example.alexr.ideamanager.services.IdeaService;
-import com.example.alexr.ideamanager.services.ServiceBuilder;
+import com.example.aadilmehraj.ideamanager.models.Idea;
+import com.example.aadilmehraj.ideamanager.services.IdeaService;
+import com.example.aadilmehraj.ideamanager.services.ServiceBuilder;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;

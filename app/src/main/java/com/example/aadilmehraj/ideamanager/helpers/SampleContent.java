@@ -1,6 +1,6 @@
-package com.example.alexr.ideamanager.helpers;
+package com.example.aadilmehraj.ideamanager.helpers;
 
-import com.example.alexr.ideamanager.models.Idea;
+import com.example.aadilmehraj.ideamanager.models.Idea;
 import java.util.ArrayList;
 import java.util.List;
 

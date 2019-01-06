@@ -1,4 +1,4 @@
-package com.example.alexr.ideamanager;
+package com.example.aadilmehraj.ideamanager;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.example.alexr.ideamanager.services;
+package com.example.aadilmehraj.ideamanager.services;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.alexr.taskmanager"
+        applicationId "com.example.aadilmehraj.taskmanager"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1

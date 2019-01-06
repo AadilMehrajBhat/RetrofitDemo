@@ -1,6 +1,6 @@
-package com.example.alexr.ideamanager.services;
+package com.example.aadilmehraj.ideamanager.services;
 
-import com.example.alexr.ideamanager.models.Idea;
+import com.example.aadilmehraj.ideamanager.models.Idea;
 import java.util.HashMap;
 import java.util.List;
 import retrofit2.Call;

@@ -1,12 +1,12 @@
-package com.example.alexr.ideamanager;
+package com.example.aadilmehraj.ideamanager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
-import com.example.alexr.ideamanager.services.MessageService;
-import com.example.alexr.ideamanager.services.ServiceBuilder;
+import com.example.aadilmehraj.ideamanager.services.MessageService;
+import com.example.aadilmehraj.ideamanager.services.ServiceBuilder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
